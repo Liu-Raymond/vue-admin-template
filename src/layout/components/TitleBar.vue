@@ -1,11 +1,8 @@
 
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-
-    <breadcrumb class="breadcrumb-container" />
-
-    <!-- <div class="right-menu">
+    <div class="title">新通设备设施物联网平台</div>
+    <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -28,20 +25,15 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
 
 export default {
-  components: {
-    Breadcrumb,
-    Hamburger
-  },
+
   computed: {
     ...mapGetters([
       'sidebar',
@@ -49,9 +41,6 @@ export default {
     ])
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
-    },
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
@@ -61,13 +50,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+$topBarBgColor:#3c77ff;
 .navbar {
   height: 50px;
+  color:#fff;
   overflow: hidden;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  background: $topBarBgColor;
 
   .hamburger-container {
     line-height: 46px;
@@ -82,8 +73,10 @@ export default {
     }
   }
 
-  .breadcrumb-container {
+  .title {
     float: left;
+    line-height:50px;
+
   }
 
   .right-menu {

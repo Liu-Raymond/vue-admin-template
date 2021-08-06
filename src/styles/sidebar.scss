@@ -1,7 +1,9 @@
 #app {
-
+  .topBar-container{
+    // height:$topBarHeight;
+  }
   .main-container {
-    min-height: 100%;
+    min-height: calc(100% - $topBarHeight);
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
@@ -14,7 +16,7 @@
     height: 100%;
     position: fixed;
     font-size: 0px;
-    top: 0;
+    top: $topBarHeight; // 导航栏向下移动50px;
     bottom: 0;
     left: 0;
     z-index: 1001;

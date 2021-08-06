@@ -1,5 +1,8 @@
 <template>
   <div :class="classObj" class="app-wrapper">
+    <div class="topBar-container">
+      <title-bar />
+    </div>
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
     <div class="main-container">
@@ -12,7 +15,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, Sidebar, AppMain, TitleBar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -20,7 +23,8 @@ export default {
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    TitleBar
   },
   mixins: [ResizeMixin],
   computed: {
@@ -53,7 +57,6 @@ export default {
 <style lang="scss" scoped>
   @import "~@/styles/mixin.scss";
   @import "~@/styles/variables.scss";
-
   .app-wrapper {
     @include clearfix;
     position: relative;
